@@ -19,6 +19,10 @@ namespace Inventory.Models
         public double DiscountPercentage { get; set; }
         public double DiscountAmount { get; set; }
         public double SubTotal { get; set; }
+        public double TexPercentage { get; set; }
+        public double TexAmount { get; set; }   
         public double Total { get; set; }
+
+
     }
 }

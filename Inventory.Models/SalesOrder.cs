@@ -21,6 +21,8 @@ namespace Inventory.Models
         public double Discount { get; set; }
         public double Tex { get; set; }
         public double Total { get; set; }
+        public ICollection<SalesOrderLine> salesOrderLines { get; set; } =
+            new HashSet<SalesOrderLine>();
 
     }
 }
