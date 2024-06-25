@@ -25,8 +25,8 @@ namespace Inventory.Utility
         public DbInitializer(UserManager<AppUser> userManager,
             RoleManager<IdentityRole> roleManager,
             IOptions<SuperAdmin> superAdmin,
-            ApplicationDbContext context = null,
-            IRoleInventory roleInventory = null)
+            ApplicationDbContext context,
+            IRoleInventory roleInventory)
         {
             _userManager = userManager;
             _roleManager = roleManager;
