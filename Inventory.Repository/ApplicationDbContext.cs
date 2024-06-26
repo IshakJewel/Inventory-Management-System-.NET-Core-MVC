@@ -19,7 +19,8 @@ namespace Inventory.Repository
         public DbSet<Branch> Branches { get; set; } 
         public DbSet<Currency> Currencies { get; set; }
         public DbSet<Customer> Customers { get; set; }
-        public DbSet<CustomerType> GetCustomerTypes { get; set; }
+        public DbSet<CustomerType> CustomerTypes { get; set; }
+        //public DbSet<CustomerType> GetCustomerTypes { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<MeasureUnit> MeasureUnits { get; set; }
