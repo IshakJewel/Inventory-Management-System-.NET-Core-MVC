@@ -1,5 +1,6 @@
 ﻿using Inventory.Repository.Paging;
 using Inventory.ViewModel.Customer;
+using Inventory.ViewModel.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;

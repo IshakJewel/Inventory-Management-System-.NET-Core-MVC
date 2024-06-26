@@ -10,6 +10,6 @@ namespace Inventory.Repository.CustomerService
 {
     public interface ICustomerRepo
     {
-        Task<PaginatedList<CustomerListViewModel>> GetAll();
+        Task<PaginatedList<CustomerListViewModel>> GetAll(int pageSize, int pageNumber);
     }
 }

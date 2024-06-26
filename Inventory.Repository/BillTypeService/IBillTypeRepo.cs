@@ -1,4 +1,5 @@
 ﻿using Inventory.Repository.Paging;
+using Inventory.ViewModel.Bill;
 using Inventory.ViewModel.Customer;
 using System;
 using System.Collections.Generic;
@@ -6,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Inventory.Repository.CustomerType
+namespace Inventory.Repository.BillTypeService
 {
-    public interface ICustomerTypeRepo
+    public interface IBillTypeRepo
     {
-        Task<PaginatedList<CustomerTypeListViewModel>> GetAll();
+        Task<PaginatedList<BillTypeListModel>> GetAll(int pageSize, int pageNumber);
     }
 }
