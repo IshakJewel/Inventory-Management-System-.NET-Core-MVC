@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inventory.Services", "Inven
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inventory.Utility", "Inventory.Utility\Inventory.Utility.csproj", "{87B8522C-5867-44D2-821D-00F914A8CE9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory.ViewModel", "Inventory.ViewModel\Inventory.ViewModel.csproj", "{2AFD3B9A-0A9F-4CB2-A817-B56BAC982F63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inventory.ViewModel", "Inventory.ViewModel\Inventory.ViewModel.csproj", "{2AFD3B9A-0A9F-4CB2-A817-B56BAC982F63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

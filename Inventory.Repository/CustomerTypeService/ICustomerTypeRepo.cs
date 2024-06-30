@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Inventory.Repository.Paging;
+using Inventory.ViewModel.Bill;
+using Inventory.ViewModel.Customer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +11,6 @@ namespace Inventory.Repository.CustomerTypeService
 {
     public interface ICustomerTypeRepo
     {
-        //Task<> 
+        Task<PaginatedList<CustomerTypeListViewModel>> GetAll(int pageSize, int pageNumber);
     }
 }
