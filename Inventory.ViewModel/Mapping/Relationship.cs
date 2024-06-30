@@ -1,6 +1,7 @@
 ﻿using Inventory.Models;
 using Inventory.ViewModel.Bill;
 using Inventory.ViewModel.Customer;
+using Inventory.ViewModel.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,6 +57,31 @@ namespace Inventory.ViewModel.Mapping
                     Description= ct.Description
                 });
 
+            }
+            return list;
+        }
+        public static IEnumerable<BillListViewModel>
+            ModelToVM(this IEnumerable<Inventory.Models.Bill> bills)
+        {
+            List<BillListViewModel> list = new List<BillListViewModel>();
+            foreach (var ct in bills)
+            {
+                list.Add(new BillListViewModel()
+                {
+                });
+            }
+            return list;
+        }
+        public static IEnumerable<ProductTypeListViewModel> 
+            ModelToVM(this IEnumerable<Inventory.Models.ProductType> productTypes)
+        {
+            List<ProductTypeListViewModel> list=new List<ProductTypeListViewModel>();
+            foreach (var ct in productTypes)
+            {
+                list.Add(new ProductTypeListViewModel()
+                {
+
+                });
             }
             return list;
         }
