@@ -85,5 +85,18 @@ namespace Inventory.ViewModel.Mapping
             }
             return list;
         }
+        public static IEnumerable<ProductListViewModel>
+            ModelToVM(this IEnumerable<Inventory.Models.Product> products)
+        {
+            List<ProductListViewModel> list = new List<ProductListViewModel>();
+            foreach (var ct in products)
+            {
+                list.Add(new ProductListViewModel()
+                {
+
+                });
+            }
+            return list;
+        }
     }
 }

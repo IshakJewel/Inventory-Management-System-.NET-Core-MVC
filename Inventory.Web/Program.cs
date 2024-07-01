@@ -2,6 +2,12 @@ using Inventory.Utility.HelperClass;
 using Inventory.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Inventory.Repository.BillTypeService;
+using Inventory.Repository.BillService;
+using Inventory.Repository.CustomerService;
+using Inventory.Repository.CustomerTypeService;
+using Inventory.Repository.ProductService;
+using Inventory.Repository.ProductTypeService;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");
@@ -12,6 +18,12 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IBillTypeRepo, BillTypeRepo>();
+builder.Services.AddScoped<IBillRepo, BillRepo>();
+builder.Services.AddScoped<ICustomerRepo, CustomerRepo>();
+builder.Services.AddScoped<ICustomerTypeRepo, CustomerTypeRepo>();
+builder.Services.AddScoped<IProductRepo, ProductRepo>();
+builder.Services.AddScoped<IProductTypeRepo, ProductTypeRepo>();
 builder.Services.Configure<SuperAdmin>(builder.Configuration.GetSection("SuperAdmin"));
 
 var app = builder.Build();

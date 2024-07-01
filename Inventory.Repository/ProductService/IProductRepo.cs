@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Inventory.Models;
+using Inventory.Repository.Paging;
+using Inventory.ViewModel.Bill;
+using Inventory.ViewModel.Product;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +12,6 @@ namespace Inventory.Repository.ProductService
 {
     public interface IProductRepo
     {
+        Task<PaginatedList<ProductListViewModel>> GetAll(int pageSize, int pageNumber);
     }
 }
