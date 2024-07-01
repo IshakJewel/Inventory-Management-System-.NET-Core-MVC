@@ -1,0 +1,16 @@
+﻿@using Inventory.Repository.Paging;
+@using Inventory.ViewModel.Bill;
+@model PaginatedList<BillTypeListModel>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="row">
+    <div class="col-6">
+        Add New Bill Type
+        <a asp-action="" class="btn btn-primary">Add</a>
+    </div>
+    <div class="col-6">Search Here...</div>
+</div>
+
+
+

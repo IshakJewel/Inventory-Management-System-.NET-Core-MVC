@@ -12,10 +12,10 @@ namespace Inventory.Web.Controllers
             _billTypeRepo = billTypeRepo;
         }
 
-        public IActionResult Index(int pageSize, int PageNumber)
+        public async Task<IActionResult> Index(int pageSize=10, int PageNumber=1)
         {
-
-            return View();
+            var billTypes = await _billTypeRepo.GetAll(pageSize, PageNumber);
+            return View(billTypes);
         }
     }
 }
