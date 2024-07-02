@@ -23,5 +23,38 @@ namespace Inventory.Repository.BillTypeService
             var vm = BillTypeList.ModelToVM().AsQueryable();
             return await PaginatedList<BillTypeListModel>.CreateAsync(vm, pageSize, pageNumber);
         }
+        public void Add(CreateBillTypeViewModel model)
+        {
+            var BillTypeList = model.VMToModel();
+            _context.BillTypes.Add(BillTypeList);
+            _context.SaveChanges();
+        }
+        public void Update(BillTypeViewModel vm)
+        {
+            var model = _context.BillTypes.Where(x=>x.BillTypeId==vm.BillTypeId).FirstOrDefault();
+            if (model!=null)
+            { 
+                model.BillTypeName = vm.BillTypeName;
+                model.Description = vm.Description;
+            }
+            _context.SaveChanges();
+            
+        }
+        public void Delete(int id)
+        {
+            var model = _context.BillTypes.Where(x => x.BillTypeId == id).FirstOrDefault();
+            if (model != null)
+            {
+                _context.BillTypes.Remove(model);
+            }
+            _context.SaveChanges();
+        }
+
+        public BillTypeViewModel GetById(int id)
+        {
+            var model = _context.BillTypes.Where(x => x.BillTypeId == id).FirstOrDefault();
+            var vm = new BillTypeViewModel(model);
+            return vm;
+        }
     }
 }

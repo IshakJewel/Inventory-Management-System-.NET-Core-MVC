@@ -8,22 +8,27 @@ using Inventory.Repository.CustomerService;
 using Inventory.Repository.CustomerTypeService;
 using Inventory.Repository.ProductService;
 using Inventory.Repository.ProductTypeService;
+using Microsoft.Extensions.DependencyInjection;
+using Inventory.Models;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");
 
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<ApplicationDbContext>(
+    options => options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddIdentity<AppUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IBillTypeRepo, BillTypeRepo>();
-builder.Services.AddScoped<IBillRepo, BillRepo>();
-builder.Services.AddScoped<ICustomerRepo, CustomerRepo>();
-builder.Services.AddScoped<ICustomerTypeRepo, CustomerTypeRepo>();
-builder.Services.AddScoped<IProductRepo, ProductRepo>();
-builder.Services.AddScoped<IProductTypeRepo, ProductTypeRepo>();
+//builder.Services.AddScoped<IBillRepo, BillRepo>();
+//builder.Services.AddScoped<ICustomerRepo, CustomerRepo>();
+//builder.Services.AddScoped<ICustomerTypeRepo, CustomerTypeRepo>();
+//builder.Services.AddScoped<IProductRepo, ProductRepo>();
+//builder.Services.AddScoped<IProductTypeRepo, ProductTypeRepo>();
 builder.Services.Configure<SuperAdmin>(builder.Configuration.GetSection("SuperAdmin"));
 
 var app = builder.Build();
