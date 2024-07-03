@@ -24,13 +24,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options => options.SignIn.Re
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IBillTypeRepo, BillTypeRepo>();
-//builder.Services.AddScoped<IBillRepo, BillRepo>();
-//builder.Services.AddScoped<ICustomerRepo, CustomerRepo>();
-//builder.Services.AddScoped<ICustomerTypeRepo, CustomerTypeRepo>();
-//builder.Services.AddScoped<IProductRepo, ProductRepo>();
-//builder.Services.AddScoped<IProductTypeRepo, ProductTypeRepo>();
 builder.Services.Configure<SuperAdmin>(builder.Configuration.GetSection("SuperAdmin"));
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
