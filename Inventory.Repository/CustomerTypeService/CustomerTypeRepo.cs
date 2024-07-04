@@ -1,4 +1,5 @@
-﻿using Inventory.Repository.Paging;
+﻿using Inventory.Models;
+using Inventory.Repository.Paging;
 using Inventory.ViewModel.Bill;
 using Inventory.ViewModel.Customer;
 using Inventory.ViewModel.Mapping;
@@ -18,16 +19,30 @@ namespace Inventory.Repository.CustomerTypeService
         {
             _context = context;
         }
-        //public async Task<PaginatedList<CustomerTypeListViewModel>> GetAll(int pageSize, int pageNumber)
-        //{
-        //    var CustomerTypeList = _context.CustomerTypes;
-        //    var vm = CustomerTypeList.ModelToVM().AsQueryable();
-        //    return await PaginatedList<CustomerTypeListViewModel>.CreateAsync(vm, pageSize, pageNumber);
-        //}
-
         public PagedResult<CustomerTypeListViewModel> GetAll(int pageSize, int pageNumber)
         {
-            throw new NotImplementedException();
+            int totalCount = 0;
+            List<CustomerTypeListViewModel> vmList=new List<CustomerTypeListViewModel>();
+            try
+            {
+                int ExcludeRecords = ((pageSize * pageNumber) - pageSize);
+                var modelList = _context.CustomerTypes.
+                    Skip(ExcludeRecords).Take(ExcludeRecords).ToList();
+                totalCount = _context.BillTypes.ToList().Count;
+                vmList = CustomerTypeListViewModel(modelList);
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            var result = new PagedResult<CustomerTypeListViewModel>
+            {
+                Data = vmList,
+                TotalItems = totalCount,
+                PageNumber = pageNumber,
+                PageSize = pageSize
+            };
         }
         public void Add(CreateCustomerTypeViewModel vm)
         {
@@ -36,21 +51,30 @@ namespace Inventory.Repository.CustomerTypeService
             _context.SaveChanges();
            
         }
-
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var model = _context.CustomerTypes.Find(id);
+            if (model != null) {
+            _context.CustomerTypes.Remove(model);
+            _context.SaveChanges();
+            }
         }
-
-
         public CustomerTypeViewModel GetById(int id)
         {
-            throw new NotImplementedException();
-        }
+            var model = _context.CustomerTypes.Find(id);
+            var vm = new CustomerTypeViewModel(model);
+            return vm;
 
-        public void Update(CustomerTypeViewModel model)
+        }
+        public void Update(CustomerTypeViewModel vm)
         {
-            throw new NotImplementedException();
+           var model = _context.CustomerTypes.Where(x=>x.CustomerTypeId==vm.CustomerTypeId).FirstOrDefault();
+            if (model != null)
+            {
+                model.CustomerTypeName = vm.CustomerTypeName;
+                model.Description = vm.Description;
+            }
+            _context.SaveChanges();
         }
     }
 }

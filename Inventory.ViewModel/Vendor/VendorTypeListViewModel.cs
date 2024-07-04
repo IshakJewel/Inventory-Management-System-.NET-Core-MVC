@@ -5,14 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Inventory.Models
+namespace Inventory.ViewModel.Vendor
 {
-    public class CustomerType
+    public class VendorTypeListViewModel
     {
-        public int CustomerTypeId { get; set; }
-        [Required]
-        public string CustomerTypeName { get; set; }
+        public int VendorTypeId { get; set; }
+        public string VendorTypeName { get; set; }
         public string Description { get; set; }
-        
     }
 }

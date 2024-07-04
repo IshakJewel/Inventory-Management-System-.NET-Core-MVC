@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Inventory.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,11 @@ namespace Inventory.ViewModel.Customer
         public int CustomerTypeId { get; set; }
         public string? CustomerTypeName { get; set; }
         public string? Description { get; set; }
+        public CustomerTypeViewModel(CustomerType model)
+        {
+            CustomerTypeId = model.CustomerTypeId;
+            CustomerTypeName = model.CustomerTypeName;
+            Description = model.Description;
+        }
     }
 }
