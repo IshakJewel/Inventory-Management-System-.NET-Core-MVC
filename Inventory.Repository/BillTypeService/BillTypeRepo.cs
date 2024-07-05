@@ -5,6 +5,7 @@ using Inventory.ViewModel.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,12 +18,13 @@ namespace Inventory.Repository.BillTypeService
         {
             _context = context;
         }
-        public async Task<PaginatedList<BillTypeListModel>> GetAll(int pageSize, int pageNumber)
-        {
-            var BillTypeList = _context.BillTypes;
-            var vm = BillTypeList.ModelToVM().AsQueryable();
-            return await PaginatedList<BillTypeListModel>.CreateAsync(vm, pageSize, pageNumber);
-        }
+        //public async Task<PaginatedList<BillTypeListModel>> GetAll(int pageNumber, int pageSize)
+        //{
+        //    var BillTypeList = _context.BillTypes;
+        //    var vm = BillTypeList.ModelToVM().AsQueryable();
+        //    return await PaginatedList<BillTypeListModel>.CreateAsync(vm, pageNumber, pageSize);
+        //}
+       
         public void Add(CreateBillTypeViewModel model)
         {
             var BillTypeList = model.VMToModel();
@@ -55,6 +57,13 @@ namespace Inventory.Repository.BillTypeService
             var model = _context.BillTypes.Where(x => x.BillTypeId == id).FirstOrDefault();
             var vm = new BillTypeViewModel(model);
             return vm;
+        }
+
+        public PagedResult<BillListViewModel> GetAll(int pageSize, int pageNumber)
+        {
+            var BillTypeList = _context.BillTypes;
+            var vm = BillTypeList.ModelToVM().AsQueryable();
+            return  PagedResult<BillTypeListModel>.CreateAsync(vm, pageNumber, pageSize);
         }
     }
 }

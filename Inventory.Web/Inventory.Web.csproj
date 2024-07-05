@@ -20,7 +20,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Inventory.Models\Inventory.Models.csproj" />
+    <ProjectReference Include="..\Inventory.Repository\Inventory.Repository.csproj" />
+    <ProjectReference Include="..\Inventory.Services\Inventory.Services.csproj" />
     <ProjectReference Include="..\Inventory.Utility\Inventory.Utility.csproj" />
+    <ProjectReference Include="..\Inventory.ViewModel\Inventory.ViewModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Identity\" />
   </ItemGroup>
 
 </Project>

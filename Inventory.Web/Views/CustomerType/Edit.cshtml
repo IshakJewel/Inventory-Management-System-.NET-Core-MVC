@@ -1,17 +1,14 @@
-﻿@model Inventory.ViewModel.Bill.CreateBillTypeViewModel
+﻿@model Inventory.ViewModel.Customer.CustomerTypeViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>Create</h1>
-
-<h4>CreateBillTypeViewModel</h4>
+<h4>BillTypeViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
            @*  <div class="form-group">
                 <label asp-for="BillTypeId" class="control-label"></label>
@@ -19,9 +16,9 @@
                 <span asp-validation-for="BillTypeId" class="text-danger"></span>
             </div> *@
             <div class="form-group">
-                <label asp-for="BillTypeName" class="control-label"></label>
-                <input asp-for="BillTypeName" class="form-control" />
-                <span asp-validation-for="BillTypeName" class="text-danger"></span>
+                <label asp-for="CustomerTypeName" class="control-label"></label>
+                <input asp-for="CustomerTypeName" class="form-control" />
+                <span asp-validation-for="CustomerTypeName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
@@ -29,7 +26,7 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
