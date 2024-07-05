@@ -13,11 +13,13 @@ namespace Inventory.Web.Controllers
             _billTypeRepo = billTypeRepo;
         }
         [HttpGet]
+
         public IActionResult Index(int pageSize = 10, int PageNumber = 1)
         {
             var billTypes = _billTypeRepo.GetAll(PageNumber, pageSize);
             return View(billTypes);
         }
+
         [HttpGet]
         public IActionResult Create()
         {
