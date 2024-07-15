@@ -39,6 +39,7 @@ namespace Inventory.Web.Controllers
             return View(model);
         }
         [HttpPost]
+
         public IActionResult Edit(CustomerTypeViewModel model)
         {
             if (ModelState.IsValid)
